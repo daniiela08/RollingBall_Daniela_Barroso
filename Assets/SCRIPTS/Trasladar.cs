@@ -5,7 +5,8 @@ using UnityEngine;
 public class Trasladar : MonoBehaviour
 {
     [SerializeField] Vector3 direccion;
-    int velocidad = 3;
+    [SerializeField] int velocidad;
+    float timer = 0;
     void Start()
     {
         
@@ -13,6 +14,13 @@ public class Trasladar : MonoBehaviour
 
     void Update()
     {
-        transform.Translate(direccion * velocidad * Time.deltaTime);    
+        transform.Translate(direccion * velocidad * Time.deltaTime);  
+        timer=timer+Time.deltaTime;
+
+        if (timer >= 10f)
+        {
+            direccion=-direccion;
+            timer = 0f;
+        }
     }
 }
