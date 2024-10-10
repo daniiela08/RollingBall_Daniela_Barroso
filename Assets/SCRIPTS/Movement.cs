@@ -11,13 +11,19 @@ public class Movement : MonoBehaviour
     Vector3 salto;
     Vector3 movimiento;
     [SerializeField] TMP_Text textoPuntos;
+    [SerializeField] TMP_Text textoVidas;
     private int puntos;
-    
+    private int vida;
+
+    Vector3 posicionInicio;
     void Start()
     {
         rb = GetComponent < Rigidbody >();
         puntos = 0;
-        textoPuntos.text = ("x 0");
+        vida = 3;
+        textoPuntos.text = ("Monedas :0");
+        textoVidas.text = ("vidas 0");
+        posicionInicio = transform.position;
     }
 
     
@@ -50,6 +56,27 @@ public class Movement : MonoBehaviour
             puntos++;
             textoPuntos.text = "Monedas" + puntos.ToString(" :0");
         }
+        if (other.gameObject.CompareTag("trampa"))
+        {
+            vida--;
+            textoVidas.text = "vidas " + vida;
+        }
+        if (other.gameObject.CompareTag("puerta") && puntos == 7)
+        {
+            Destroy(other.gameObject);
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("vacio"))
+        {
+            transform.position = posicionInicio;
+        }
+        
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+      
     }
 
 }

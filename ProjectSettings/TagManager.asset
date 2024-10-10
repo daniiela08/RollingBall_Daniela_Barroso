@@ -11,6 +11,8 @@ TagManager:
   - Fire
   - puerta
   - item
+  - trampa
+  - vacio
   layers:
   - Default
   - TransparentFX
