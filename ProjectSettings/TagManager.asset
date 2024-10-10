@@ -10,6 +10,7 @@ TagManager:
   - Blue
   - Fire
   - puerta
+  - item
   layers:
   - Default
   - TransparentFX

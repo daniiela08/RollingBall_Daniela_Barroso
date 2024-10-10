@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Movement : MonoBehaviour
@@ -9,9 +10,14 @@ public class Movement : MonoBehaviour
     public float fuerza;
     Vector3 salto;
     Vector3 movimiento;
+    [SerializeField] TMP_Text textoPuntos;
+    private int puntos;
+    
     void Start()
     {
         rb = GetComponent < Rigidbody >();
+        puntos = 0;
+        textoPuntos.text = ("x 0");
     }
 
     
@@ -36,4 +42,14 @@ public class Movement : MonoBehaviour
         rb.AddForce(movimiento * fuerza);
         //rb.velocity += new Vector3(0, -9.81f * 4, 0);
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.CompareTag("item"))
+        {
+            Destroy(other.gameObject);
+            puntos++;
+            textoPuntos.text = "Monedas" + puntos.ToString(" :0");
+        }
+    }
+
 }
