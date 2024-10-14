@@ -12,6 +12,7 @@ public class Movement : MonoBehaviour
     Vector3 movimiento;
     [SerializeField] TMP_Text textoPuntos;
     [SerializeField] TMP_Text textoVidas;
+   
     private int puntos;
     private int vida;
 
@@ -22,7 +23,7 @@ public class Movement : MonoBehaviour
         puntos = 0;
         vida = 3;
         textoPuntos.text = ("Monedas :0");
-        textoVidas.text = ("vidas 0");
+        textoVidas.text = ("vidas: 3");
         posicionInicio = transform.position;
     }
 
@@ -37,12 +38,12 @@ public class Movement : MonoBehaviour
             rb.AddForce(salto * fuerzasalto, ForceMode.Impulse);
         }
          movimiento = new Vector3(movX, 0, movZ);
+
+
+        
     }
     void FixedUpdate()
     {
-
-
-
 
 
         rb.AddForce(movimiento * fuerza);
@@ -61,10 +62,7 @@ public class Movement : MonoBehaviour
             vida--;
             textoVidas.text = "vidas " + vida;
         }
-        if (other.gameObject.CompareTag("puerta") && puntos == 7)
-        {
-            Destroy(other.gameObject);
-        }
+        
     }
     private void OnTriggerExit(Collider other)
     {
@@ -76,7 +74,11 @@ public class Movement : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-      
+        if (collision.gameObject.CompareTag("puerta") && puntos >= 7)
+        {
+            Debug.Log("dsfdsf");
+            Destroy(collision.gameObject);
+        }
     }
 
 }
