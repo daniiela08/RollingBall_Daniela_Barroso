@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Movement : MonoBehaviour
 {
@@ -57,11 +58,7 @@ public class Movement : MonoBehaviour
             puntos++;
             textoPuntos.text = "Monedas" + puntos.ToString(" :0");
         }
-        if (other.gameObject.CompareTag("trampa"))
-        {
-            vida--;
-            textoVidas.text = "vidas " + vida;
-        }
+        
         
     }
     private void OnTriggerExit(Collider other)
@@ -78,6 +75,15 @@ public class Movement : MonoBehaviour
         {
             Debug.Log("dsfdsf");
             Destroy(collision.gameObject);
+        }
+        if (collision.gameObject.CompareTag("trampa"))
+        {
+            vida--;
+            textoVidas.text = "vidas " + vida;
+            if (vida == 0)
+            {
+                SceneManager.LoadScene ("muerte");
+            }
         }
     }
 

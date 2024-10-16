@@ -14,4 +14,8 @@ public class Scenemagement : MonoBehaviour
     {
         Debug.Log("Adios");
     }
+    public void gameover()
+    {
+        SceneManager.LoadScene("JUEGO");
+    }
 }
