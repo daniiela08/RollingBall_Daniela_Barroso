@@ -18,4 +18,12 @@ public class Scenemagement : MonoBehaviour
     {
         SceneManager.LoadScene("JUEGO");
     }
+    public void objetivo()
+    {
+        SceneManager.LoadScene("MENU");
+    }
+    public void OBJETIVE()
+    {
+        SceneManager.LoadScene("OBJETIVO");
+    }
 }
