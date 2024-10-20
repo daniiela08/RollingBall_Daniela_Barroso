@@ -17,6 +17,12 @@ public class Movement : MonoBehaviour
     private int puntos;
     private int vida;
 
+    private float tiempoTotal = 60f;
+    private float tiempoRestante;
+    [SerializeField] TMP_Text crono;
+    
+    
+
     Vector3 posicionInicio;
     void Start()
     {
@@ -26,6 +32,7 @@ public class Movement : MonoBehaviour
         textoPuntos.text = ("Monedas :0");
         textoVidas.text = ("vidas: 3");
         posicionInicio = transform.position;
+        tiempoRestante = tiempoTotal;
     }
 
     
@@ -40,8 +47,8 @@ public class Movement : MonoBehaviour
         }
          movimiento = new Vector3(movX, 0, movZ);
 
-
-        
+        tiempoRestante -= Time.deltaTime;
+        crono.text = tiempoRestante.ToString("00:00");
     }
     void FixedUpdate()
     {
@@ -59,7 +66,8 @@ public class Movement : MonoBehaviour
             textoPuntos.text = "Monedas" + puntos.ToString(" :0");
         }
         
-        
+
+
     }
     private void OnTriggerExit(Collider other)
     {
@@ -71,11 +79,7 @@ public class Movement : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("puerta") && puntos >= 7)
-        {
-            Debug.Log("dsfdsf");
-            Destroy(collision.gameObject);
-        }
+        
         if (collision.gameObject.CompareTag("trampa"))
         {
             vida--;
@@ -84,6 +88,10 @@ public class Movement : MonoBehaviour
             {
                 SceneManager.LoadScene ("muerte");
             }
+        }
+        if (collision.gameObject.CompareTag("puerta") && puntos >= 7)   l
+        {
+            Destroy(collision.gameObject);
         }
     }
 
