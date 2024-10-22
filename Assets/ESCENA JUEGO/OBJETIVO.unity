@@ -522,9 +522,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: EVITAR           A              TODA             COSTA             TOCAR         
-    LOS                   circulos                                   DE          
-    COLOR            ROJO                  radioactivo
+  m_text: 'EVITAR           A              TODA             COSTA             TOCAR              
+    LOS               OBJETOS                               DE         COLOR           
+    ROJO                     radioactivo                 '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 774cb2cd36f638541add532239c92119, type: 2}
   m_sharedMaterial: {fileID: 6976555198819412940, guid: 774cb2cd36f638541add532239c92119,

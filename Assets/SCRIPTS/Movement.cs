@@ -20,8 +20,8 @@ public class Movement : MonoBehaviour
     private float tiempoTotal = 60f;
     private float tiempoRestante;
     [SerializeField] TMP_Text crono;
-    
-    
+
+    [SerializeField] private float radioRay;
 
     Vector3 posicionInicio;
     void Start()
@@ -40,7 +40,7 @@ public class Movement : MonoBehaviour
     {
         float movX = Input.GetAxis("Horizontal");
         float movZ = Input.GetAxis("Vertical");
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space)&&tocoSuelo())
         {
             salto = new Vector3(0, 1, 0);
             rb.AddForce(salto * fuerzasalto, ForceMode.Impulse);
@@ -65,8 +65,8 @@ public class Movement : MonoBehaviour
             puntos++;
             textoPuntos.text = "Monedas" + puntos.ToString(" :0");
         }
-        
 
+        
 
     }
     private void OnTriggerExit(Collider other)
@@ -75,6 +75,10 @@ public class Movement : MonoBehaviour
         {
             transform.position = posicionInicio;
         }
+        
+    }
+    private void OnCollisionStay(Collision collision)
+    {
         
     }
     private void OnCollisionEnter(Collision collision)
@@ -89,10 +93,15 @@ public class Movement : MonoBehaviour
                 SceneManager.LoadScene ("muerte");
             }
         }
-        if (collision.gameObject.CompareTag("puerta") && puntos >= 7)   l
+        if (collision.gameObject.CompareTag("puerta") && puntos >= 7)
         {
-            Destroy(collision.gameObject);
+            collision.gameObject.SetActive(false);
         }
     }
-
+    private bool tocoSuelo()
+    {
+        bool resultado = Physics.Raycast(transform.position, Vector3.down, radioRay);
+        Debug.DrawLine(transform.position, Vector3.down, Color.red, 2f);
+        return resultado;
+    }
 }
