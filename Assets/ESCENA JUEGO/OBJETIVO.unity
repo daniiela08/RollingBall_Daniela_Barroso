@@ -1292,7 +1292,8 @@ MonoBehaviour:
   m_text: recorrer           el                                escenario                         
     antes                       de                           que                     
     se                        te                                       acabe                                     
-    el                                      tiempo
+    el                                      tiempo             y             recoger                                
+    la                                      estrella                            final
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 774cb2cd36f638541add532239c92119, type: 2}
   m_sharedMaterial: {fileID: 6976555198819412940, guid: 774cb2cd36f638541add532239c92119,

@@ -15,9 +15,9 @@ EditorBuildSettings:
     path: Assets/ESCENA JUEGO/JUEGO.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
-    path: Assets/ESCENA JUEGO/PAUSA.unity
-    guid: 0c83af97620b85243888fab24e600e82
-  - enabled: 1
     path: Assets/ESCENA JUEGO/muerte.unity
     guid: 0d5838ab9ca654344975e0dc534f35c5
+  - enabled: 1
+    path: Assets/ESCENA JUEGO/WIN.unity
+    guid: db7bb91d8f0aff648bd5440f52332e9a
   m_configObjects: {}

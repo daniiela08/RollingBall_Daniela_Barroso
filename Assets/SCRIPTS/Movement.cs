@@ -17,7 +17,7 @@ public class Movement : MonoBehaviour
     private int puntos;
     private int vida;
 
-    private float tiempoTotal = 60f;
+    private float tiempoTotal = 180f;
     private float tiempoRestante;
     [SerializeField] TMP_Text crono;
 
@@ -49,6 +49,10 @@ public class Movement : MonoBehaviour
 
         tiempoRestante -= Time.deltaTime;
         crono.text = tiempoRestante.ToString("00:00");
+        if(tiempoRestante <= 0)
+        {
+            SceneManager.LoadScene(3);
+        }
     }
     void FixedUpdate()
     {
@@ -96,6 +100,10 @@ public class Movement : MonoBehaviour
         if (collision.gameObject.CompareTag("puerta") && puntos >= 7)
         {
             collision.gameObject.SetActive(false);
+        }
+        if (collision.gameObject.CompareTag("ganar"))
+        {
+            SceneManager.LoadScene(4);
         }
     }
     private bool tocoSuelo()

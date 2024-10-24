@@ -13,6 +13,7 @@ TagManager:
   - item
   - trampa
   - vacio
+  - ganar
   layers:
   - Default
   - TransparentFX
