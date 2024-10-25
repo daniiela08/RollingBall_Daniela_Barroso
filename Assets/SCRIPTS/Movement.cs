@@ -69,8 +69,11 @@ public class Movement : MonoBehaviour
             puntos++;
             textoPuntos.text = "Monedas" + puntos.ToString(" :0");
         }
+        if (other.gameObject.CompareTag("VAIO2"))
+        {
+            transform.position = posicionInicio;
+        }
 
-        
 
     }
     private void OnTriggerExit(Collider other)
