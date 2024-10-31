@@ -20,10 +20,15 @@ public class Movement : MonoBehaviour
     private float tiempoTotal = 180f;
     private float tiempoRestante;
     [SerializeField] TMP_Text crono;
+    private int segundos;
+    private int minutos;
 
     [SerializeField] private float radioRay;
 
     Vector3 posicionInicio;
+
+    private AudioSource audio;
+
     void Start()
     {
         rb = GetComponent < Rigidbody >();
@@ -33,6 +38,7 @@ public class Movement : MonoBehaviour
         textoVidas.text = ("vidas: 3");
         posicionInicio = transform.position;
         tiempoRestante = tiempoTotal;
+        audio = GetComponent<AudioSource>();
     }
 
     
@@ -48,7 +54,11 @@ public class Movement : MonoBehaviour
          movimiento = new Vector3(movX, 0, movZ);
 
         tiempoRestante -= Time.deltaTime;
-        crono.text = tiempoRestante.ToString("00:00");
+
+         minutos = Mathf.FloorToInt(tiempoRestante / 60);
+         segundos = Mathf.FloorToInt(tiempoRestante % 60);
+
+        crono.text = minutos.ToString("00") + ":" + segundos.ToString("00");
         if(tiempoRestante <= 0)
         {
             SceneManager.LoadScene(3);
@@ -68,6 +78,7 @@ public class Movement : MonoBehaviour
             Destroy(other.gameObject);
             puntos++;
             textoPuntos.text = "Monedas" + puntos.ToString(" :0");
+            audio.Play();
         }
         if (other.gameObject.CompareTag("VAIO2"))
         {
@@ -100,12 +111,14 @@ public class Movement : MonoBehaviour
                 SceneManager.LoadScene ("muerte");
             }
         }
-        if (collision.gameObject.CompareTag("puerta") && puntos >= 7)
+        if (collision.gameObject.CompareTag("puerta") && puntos >= 5)
         {
             collision.gameObject.SetActive(false);
         }
         if (collision.gameObject.CompareTag("ganar"))
         {
+            PlayerPrefs.SetInt("PuntuacionMin", minutos);
+            PlayerPrefs.SetInt("PuntuacionSeg", segundos);
             SceneManager.LoadScene(4);
         }
     }
