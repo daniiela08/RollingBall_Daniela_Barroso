@@ -17,7 +17,7 @@ public class Movement : MonoBehaviour
     private int puntos;
     private int vida;
 
-    private float tiempoTotal = 180f;
+    private float tiempoTotal = 300f;
     private float tiempoRestante;
     [SerializeField] TMP_Text crono;
     private int segundos;

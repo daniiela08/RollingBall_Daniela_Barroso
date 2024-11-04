@@ -878,7 +878,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 360202729}
         m_TargetAssemblyTypeName: Scenemagement, Assembly-CSharp
-        m_MethodName: gameover
+        m_MethodName: Juego
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
