@@ -15,6 +15,7 @@ TagManager:
   - vacio
   - ganar
   - VAIO2
+  - CheckP
   layers:
   - Default
   - TransparentFX

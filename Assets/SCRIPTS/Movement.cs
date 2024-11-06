@@ -29,6 +29,8 @@ public class Movement : MonoBehaviour
 
     private AudioSource audio;
 
+    [SerializeField] GameObject chekP;
+
     void Start()
     {
         rb = GetComponent < Rigidbody >();
@@ -84,7 +86,10 @@ public class Movement : MonoBehaviour
         {
             transform.position = posicionInicio;
         }
-
+        if (other.gameObject.CompareTag("CheckP"))
+        {
+            posicionInicio = chekP.transform.position;
+        }
 
     }
     private void OnTriggerExit(Collider other)
