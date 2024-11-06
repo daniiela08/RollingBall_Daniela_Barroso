@@ -7,7 +7,7 @@ public class CAMHAXA : MonoBehaviour
     [SerializeField] private GameObject Camarapersonaje;
     [SerializeField] private GameObject HACHACAM;
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("PLAYER"))
         {
